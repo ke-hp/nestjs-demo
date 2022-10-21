@@ -1,22 +1,32 @@
-import { Controller, Get, Post, Query, Body } from '@nestjs/common';
+import { Controller, Get, Post, Query, Body, Request, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+
 import { UserService } from './user.service';
-// import { Cat } from './interfaces/.interface';
 import { LoginDto } from './dto/user.dto.login';
 
 @Controller('user')
-export class CatController {
+export class UserController {
   constructor(private readonly UserS: UserService) {
   }
 
-  @Post('login')
-  async create(@Body() loginDto: LoginDto) {
-    return this.UserS.login(loginDto);
+  @Post('sign-in')
+  async signIn(@Body() signInDto: LoginDto) {
+    return this.UserS.signIn(signInDto.name, signInDto.pwd);
   }
 
-  //
-  // @Get()
-  // async findAll(): Promise<Cat[]> {
-  //   return this.CatS.findAll();
-  // }
+  @UseGuards(AuthGuard('local'))
+  @Post('login')
+  async login(@Request() req, @Body() loginDto: LoginDto) {
+    return this.UserS.login(req.user);
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('me')
+  async getProfile(@Request() req) {
+
+    console.log('req.name', req.user);
+
+    return await this.UserS.getInfoByName(req.user.name);
+  }
 
 }
