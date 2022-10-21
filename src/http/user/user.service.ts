@@ -45,10 +45,10 @@ export class UserService {
       return null;
     }
     const pwdHast = crypto.createHash('md5').update(pwd).digest('hex');
-    if (pwdHast != userInfo.pwdHash) {
+    if (pwdHast != userInfo.passwordHash) {
       return null;
     }
-    delete userInfo.pwdHash;
+    delete userInfo.passwordHash;
     return userInfo;
   }
 

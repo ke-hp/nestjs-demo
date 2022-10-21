@@ -11,19 +11,19 @@ export class UserController {
 
   @Post('sign-in')
   async signIn(@Body() signInDto: LoginDto) {
-    return this.UserS.signIn(signInDto.name, signInDto.pwd);
+    return this.UserS.signIn(signInDto.username, signInDto.password);
   }
 
   @UseGuards(AuthGuard('local'))
   @Post('login')
   async login(@Request() req, @Body() loginDto: LoginDto) {
-    return this.UserS.login(req.user);
+    return this.UserS.login(req.username);
   }
 
   @UseGuards(AuthGuard('jwt'))
   @Get('me')
   async getProfile(@Request() req) {
-    return await this.UserS.getInfoByName(req.user.name);
+    return await this.UserS.getInfoByName(req.user.username);
   }
 
 }
