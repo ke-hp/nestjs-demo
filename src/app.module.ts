@@ -2,6 +2,7 @@ import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 
@@ -23,6 +24,16 @@ import { TaskModule } from './task/task.module';
       }),
       inject: [ConfigService],
     }),
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: '127.0.0.1',
+      port: 3306,
+      username: 'root',
+      password: 'password',
+      database: 'test',
+      entities: [],
+      synchronize: true,
+    }),
 
     HiModule,
     CatModule,
@@ -33,8 +44,6 @@ import { TaskModule } from './task/task.module';
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(LoggerMiddleware)
-      .forRoutes('/');
+    consumer.apply(LoggerMiddleware).forRoutes('/');
   }
 }
