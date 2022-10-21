@@ -23,9 +23,6 @@ export class UserController {
   @UseGuards(AuthGuard('jwt'))
   @Get('me')
   async getProfile(@Request() req) {
-
-    console.log('req.name', req.user);
-
     return await this.UserS.getInfoByName(req.user.name);
   }
 

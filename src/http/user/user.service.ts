@@ -52,6 +52,7 @@ export class UserService {
     return userInfo;
   }
 
+
   async getInfoByName(name: string): Promise<User> {
     return this.userModel.findOne({ name }, {}, { pwdHash: -1 }).exec();
   }
