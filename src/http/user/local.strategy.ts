@@ -4,7 +4,6 @@ import { PassportStrategy } from '@nestjs/passport';
 
 import { UserService } from './user.service';
 
-
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly userService: UserService) {
