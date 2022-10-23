@@ -9,6 +9,7 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { HiModule } from './http/hi/hi.module';
 import { CatModule } from './http/cat/cat.module';
 import { UserModule } from './http/user/user.module';
+import { DogModule } from './http/dog/dog.module';
 import { TaskModule } from './task/task.module';
 
 @Module({
@@ -31,13 +32,14 @@ import { TaskModule } from './task/task.module';
       username: 'root',
       password: 'password',
       database: 'test',
-      entities: [],
+      autoLoadEntities: true,
       synchronize: true,
     }),
 
     HiModule,
     CatModule,
     UserModule,
+    DogModule,
     ScheduleModule.forRoot(),
     TaskModule,
   ],

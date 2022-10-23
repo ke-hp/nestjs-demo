@@ -1,16 +1,19 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
-export class Note {
+export class Dog {
 
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  title: string;
+  name: string;
 
   @Column()
-  content: string;
+  age: number;
+
+  @Column()
+  breed: string;
 
   @Column()
   createTime: Date;
