@@ -18,6 +18,10 @@ export class CompanyService {
     return createdCat.save();
   }
 
+  async updateById(id: string, setDate: any): Promise<Company> {
+    return this.companyM.findOneAndUpdate({ _id: id }, { $set: setDate });
+  }
+
   async paginate(condition: string, page: number = 0, limit: number = 20) {
     return this.companyM.paginate(
       { fieldName: condition },

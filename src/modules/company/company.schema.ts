@@ -19,6 +19,15 @@ export class Company {
 
   @Prop()
   legalPerson: string; // 法人
+
+  @Prop()
+  text: string; // 文本宣传材料
+
+  @Prop()
+  img: string; // 图片宣传材料
+
+  @Prop()
+  video: string; // 视频宣传材料
 }
 
 export const CompanySchema = SchemaFactory.createForClass(Company);
