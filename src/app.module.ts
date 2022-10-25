@@ -6,11 +6,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 
-import { HiModule } from './http/hi/hi.module';
-import { CatModule } from './http/cat/cat.module';
-import { UserModule } from './http/user/user.module';
-import { DogModule } from './http/dog/dog.module';
+import { HiModule } from './modules/hi/hi.module';
+import { CatModule } from './modules/cat/cat.module';
+import { UserModule } from './modules/user/user.module';
+
+import { DogModule } from './modules/dog/dog.module';
+import { CompanyModule } from './modules/company/company.module';
 import { TaskModule } from './task/task.module';
+
+import { LinkedModule } from './modules/linked/linked.module';
+import { FileModule } from './modules/file/file.module';
+
 
 @Module({
   imports: [
@@ -40,8 +46,11 @@ import { TaskModule } from './task/task.module';
     CatModule,
     UserModule,
     DogModule,
+    CompanyModule,
     ScheduleModule.forRoot(),
     TaskModule,
+    LinkedModule,
+    FileModule,
   ],
 })
 export class AppModule {

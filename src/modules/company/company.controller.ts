@@ -1,22 +1,27 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 
-import { CatService } from './cat.service';
-import { Cat } from './interfaces/cat.interface';
-import { CreateCatDto } from './dto/cat-create.dto';
+import * as industryList from './industryList.json';
 
-@Controller('cat')
-export class CatController {
-  constructor(private readonly CatS: CatService) {
+import { CompanyService } from './company.service';
+import { CreateCompanyDto } from './dto/company-create.dto';
+
+@Controller('company')
+export class CompanyController {
+  constructor(private readonly CompanyS: CompanyService) {
   }
 
+  // 企业类型列表
+  @Get('types')
+  async types(): Promise<any> {
+    return industryList;
+  }
+
+
+  //
   @Post()
-  async create(@Body() Dto: CreateCatDto) {
-    return this.CatS.create(Dto);
+  async create(@Body() Dto: CreateCompanyDto ): Promise<any> {
+    return null;
   }
 
-  @Get()
-  async findAll(): Promise<Cat[]> {
-    return this.CatS.findAll();
-  }
-
+  //
 }

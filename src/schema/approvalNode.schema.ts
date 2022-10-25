@@ -1,25 +1,38 @@
+import * as mongoosePaginate from 'mongoose-paginate-v2';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type ProjectDocument = Project & Document;
+// 审批节点
+export type ApprovalNodeDocument = ApprovalNode & Document;
 
 @Schema({ timestamps: true })
-export class Project {
+export class ApprovalNode {
   @Prop()
-  enterpriseName: string; // 企业名称
+  matterName: string; // 行政审批事项名称
 
   @Prop()
-  projectName: string; // 项目名称
+  nodeName: string; // 节点名称
 
   @Prop()
-  industryCategory: string; // 行业类别  化工
+  serialNumber: string; // 排列序号
 
   @Prop()
-  progress: string; // 进度或者进展
+  settlesDays: number; // 办结天数
+
+  @Prop()
+  alertDays: number; // 预警天数
+
+  @Prop()
+  approvedSector: string; // 审批部门
+
+  @Prop()
+  days: number; // 间隔天数
 }
 
-export const ProjectSchema = SchemaFactory.createForClass(Project);
+const schema = SchemaFactory.createForClass(ApprovalNode);
+schema.plugin(mongoosePaginate);
 
+export const ApprovalNodeSchema = schema;
 
 /*
 todo

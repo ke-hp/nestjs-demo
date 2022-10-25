@@ -1,12 +1,18 @@
 import { IsInt, IsString } from 'class-validator';
 
-export class CreateCatDto {
+export class CreateCompanyDto {
   @IsString()
-  readonly name: string;
+  readonly name: string; // 企业名称
 
   @IsInt()
-  readonly age: number;
+  readonly industry: string; // 所属行业
+
+  @IsInt()
+  readonly capital: number; // 注册资本
 
   @IsString()
-  readonly breed: string;
+  readonly businessType: string; // 企业类型
+
+  @IsString()
+  readonly legalPerson: string; // 法人
 }

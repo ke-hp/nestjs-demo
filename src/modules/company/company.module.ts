@@ -1,13 +1,14 @@
 import { Module } from '@nestjs/common';
-import { CatController } from './cat.controller';
-import { CatService } from './cat.service';
-import { Cat, CatSchema } from './cat.schema';
+import { CompanyController } from './company.controller';
+import { CompanyService } from './company.service';
+import { Company, CompanySchema } from './company.schema';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }])],
-  controllers: [CatController],
-  providers: [CatService],
+  imports: [MongooseModule.forFeature([{ name: Company.name, schema: CompanySchema }])],
+  controllers: [CompanyController],
+  providers: [CompanyService],
 })
-export class CatModule {
+
+export class CompanyModule {
 }
