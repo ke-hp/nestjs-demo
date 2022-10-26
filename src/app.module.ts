@@ -16,6 +16,7 @@ import { TaskModule } from './task/task.module';
 
 import { LinkedModule } from './modules/linked/linked.module';
 import { FileModule } from './modules/file/file.module';
+import { DevZoneModule } from './modules/devZone/devZone.module';
 
 
 @Module({
@@ -51,6 +52,7 @@ import { FileModule } from './modules/file/file.module';
     TaskModule,
     LinkedModule,
     FileModule,
+    DevZoneModule,
   ],
 })
 export class AppModule {
