@@ -1,3 +1,4 @@
+import * as mongoosePaginate from 'mongoose-paginate-v2';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
@@ -96,8 +97,9 @@ export class Company {
   video: string; // 视频宣传材料
 }
 
-export const CompanySchema = SchemaFactory.createForClass(Company);
-
+const schema = SchemaFactory.createForClass(Company);
+schema.plugin(mongoosePaginate);
+export const CompanySchema = schema;
 
 /*
 todo

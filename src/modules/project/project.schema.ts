@@ -14,6 +14,9 @@ export class Project {
   @Prop()
   investment: string; // 项目总投资
 
+  @Prop()
+  matters: {};
+
   @Prop() // 产品项
   products: { product: string; scale: string, state: string }[];
 

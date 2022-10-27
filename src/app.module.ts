@@ -14,9 +14,10 @@ import { DogModule } from './modules/dog/dog.module';
 import { CompanyModule } from './modules/company/company.module';
 import { TaskModule } from './task/task.module';
 
-import { LinkedModule } from './modules/linked/linked.module';
+import { ProjectModule } from './modules/linked/project.module';
 import { FileModule } from './modules/file/file.module';
 import { DevZoneModule } from './modules/devZone/devZone.module';
+import { MatterModule } from './modules/matter/matter.module';
 
 
 @Module({
@@ -50,9 +51,10 @@ import { DevZoneModule } from './modules/devZone/devZone.module';
     CompanyModule,
     ScheduleModule.forRoot(),
     TaskModule,
-    LinkedModule,
+    ProjectModule,
     FileModule,
     DevZoneModule,
+    MatterModule,
   ],
 })
 export class AppModule {

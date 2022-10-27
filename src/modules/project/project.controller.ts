@@ -1,14 +1,14 @@
 import { Controller, Put, Post, Delete, Body, Param } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
-import { LinkedService } from './linked.service';
-import { LinkedDto } from './dto/linked.dto';
+import { ProjectService } from './project.service';
+import { ProjiectDto } from './dto/projiect.dto';
 import { PagingDto } from '../../common/dto/paginate';
 
-@ApiTags('外链')
-@Controller('linked')
-export class LinkedController {
-  constructor(private readonly LinkedS: LinkedService) {
+@ApiTags('项目')
+@Controller('project')
+export class ProjectController {
+  constructor(private readonly LinkedS: ProjectService) {
   }
 
   // 企业类型列表
@@ -21,14 +21,14 @@ export class LinkedController {
   // 创建外链详细
   @Post()
   @ApiOperation({ summary: '新增' })
-  async create(@Body() Dto: LinkedDto): Promise<any> {
+  async create(@Body() Dto: ProjiectDto): Promise<any> {
     return this.LinkedS.create(Dto);
   }
 
   // 修改
   @Put(':id')
   @ApiOperation({ summary: '修改' })
-  async put(@Param('id') id: string, @Body() Dto: LinkedDto): Promise<any> {
+  async put(@Param('id') id: string, @Body() Dto: ProjiectDto): Promise<any> {
     return this.LinkedS.update(id, Dto);
   }
 

@@ -10,5 +10,5 @@ import { MongooseModule } from '@nestjs/mongoose';
   providers: [LinkedService],
 })
 
-export class LinkedModule {
+export class ProjectModule {
 }

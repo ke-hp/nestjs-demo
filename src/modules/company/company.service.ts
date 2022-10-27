@@ -22,15 +22,12 @@ export class CompanyService {
     return this.companyM.findOneAndUpdate({ _id: id }, { $set: setDate });
   }
 
-  async paginate(condition: string, page: number = 0, limit: number = 20) {
-    return this.companyM.paginate(
-      { fieldName: condition },
-      {
-        sort: { createdAt: -1 },
-        limit,
-        page,
-      },
-    );
+  async deleteById(id: string): Promise<any> {
+    return this.companyM.deleteOne({ _id: id });
+  }
+
+  async paginate(qurey: any, options: any = {}) {
+    return this.companyM.paginate(qurey, options);
   }
 
   async init(arr: any) {
